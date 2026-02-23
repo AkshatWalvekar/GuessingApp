@@ -1,4 +1,4 @@
-**Guessing App (Java Console Game)**
+###**Guessing App (Java Console Game)**
 
 A feature-rich **Number Guessing Game** built in Java using OOP principles and structured with use-case based development.
 
