@@ -3,22 +3,33 @@ import java.util.Scanner;
 
 
 public class Guessing {
-	public static void main(String[] args)
-	{
-		System.out.println("Welcome to the Guessing App");
-		GameConfig gameConfig = new GameConfig();
-		gameConfig.showRules();
-		
-		Scanner scanner = new Scanner(System.in);
+	public static void main(String[] args) throws InvalidInputException{
+		int hintsUsed = 0;
 		int attempts = 0;
 		int hintCount = 0;
 		
+		System.out.println("Welcome to the Guessing App");
+		
+		GameConfig gameConfig = new GameConfig();
+		gameConfig.showRules();
+		
+		Scanner scanner = new Scanner(System.in);	
+		
+	
+	
+		
 		while(attempts<gameConfig.getMaxAttempts()){
 			System.out.println("Enter your guess: ");
-			int guess = scanner.nextInt();
+			//int guess = scanner.nextInt();
+			int guess = ValidationService.validateInput(scanner.nextLine());
 			attempts++;
 			
 			String result = GuessValidator.validateGuess(guess, gameConfig.getTargetNumber());
+			
+			if(!"CORRECT".equals(result) && hintsUsed < gameConfig.getMaxHints()){
+				hintsUsed++;
+				System.out.println(HintService.generateHint(gameConfig.getTargetNumber(), hintsUsed));
+		    }
 			
 			System.out.println(result);
 			
