@@ -1,0 +1,2 @@
+Player: Akshat, Attempts: 6, Result: LOSE
+Player: a, Attempts: 4, Result: WIN

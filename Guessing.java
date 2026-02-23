@@ -8,12 +8,16 @@ public class Guessing {
 		int attempts = 0;
 		int hintCount = 0;
 		
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to the Guessing App");
+		
+		System.out.println("Enter Player Name: ");
+		String player = scanner.nextLine();
 		
 		GameConfig gameConfig = new GameConfig();
 		gameConfig.showRules();
 		
-		Scanner scanner = new Scanner(System.in);	
+		boolean win = false;
 		
 	
 	
@@ -34,6 +38,7 @@ public class Guessing {
 			System.out.println(result);
 			
 			if ("CORRECT".equals(result)){
+				win = true;
 				break;
 			}
 			
@@ -44,5 +49,6 @@ public class Guessing {
 			System.out.println(hint);
 		}
 	}
+	StorageService.saveResult(player, attempts, win);
 }
 }
