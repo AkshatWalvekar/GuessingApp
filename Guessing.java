@@ -4,12 +4,15 @@ import java.util.Scanner;
 
 public class Guessing {
 	public static void main(String[] args) throws InvalidInputException{
+		Scanner scanner = new Scanner(System.in);
+		boolean restart;
+		System.out.println("Welcome to the Guessing App");
+		
+		do{
 		int hintsUsed = 0;
 		int attempts = 0;
 		int hintCount = 0;
 		
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Welcome to the Guessing App");
 		
 		System.out.println("Enter Player Name: ");
 		String player = scanner.nextLine();
@@ -50,5 +53,7 @@ public class Guessing {
 		}
 	}
 	StorageService.saveResult(player, attempts, win);
+	restart = GameController.restartGame(scanner);
+		}while(restart);
 }
 }
