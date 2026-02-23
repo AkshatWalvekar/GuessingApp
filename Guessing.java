@@ -11,6 +11,7 @@ public class Guessing {
 		
 		Scanner scanner = new Scanner(System.in);
 		int attempts = 0;
+		int hintCount = 0;
 		
 		while(attempts<gameConfig.getMaxAttempts()){
 			System.out.println("Enter your guess: ");
@@ -24,6 +25,13 @@ public class Guessing {
 			if ("CORRECT".equals(result)){
 				break;
 			}
+			
+			if(hintCount < gameConfig.getMaxHints()){
+				hintCount++;
+				String hint = HintService.generateHint(gameConfig.getTargetNumber(), hintCount);
+	
+			System.out.println(hint);
 		}
 	}
+}
 }
